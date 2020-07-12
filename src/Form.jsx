@@ -7,7 +7,7 @@ export default  ()=> {
 
     return <>
     <input value = {value} onChange = { e =>setValue(e.target.value)} />
-   <button>Submit</button>
+   <button id ='SubmitForm'>Submit</button>
    </>     
     
 }
