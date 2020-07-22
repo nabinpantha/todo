@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const incomeTransactions = ({incomeTransaction}) => {
     return (
         <li className ='transaction'>
