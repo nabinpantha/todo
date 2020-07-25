@@ -24,11 +24,21 @@ const addIncome = incomeTransaction => {
         payload: incomeTransaction,
     })
 }
+
+const addExpense = expenseTransaction =>{
+
+
+    dispatch ({
+        type:"ADD_EXPENSE",
+        payload:expenseTransaction,
+    })
+}
 return(
        <GlobalContext.Provider value ={{
            incomeTransactions : state.incomeTransactions,
            expenseTransactions : state.expenseTransactions,
-           addIncome
+           addIncome,
+           addExpense
        }}>
         {children}
        </GlobalContext.Provider>

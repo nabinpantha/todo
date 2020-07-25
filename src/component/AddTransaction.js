@@ -1,15 +1,46 @@
 import React ,{useState , useContext} from 'react'
 import {v4 as uuid, v4} from 'uuid'
 import {GlobalContext} from '../Context/GlobalState'
+
 const AddTransaction = () => {
 
-    const {addIncome} = useContext(GlobalContext);
+    const {addIncome , addExpense} = useContext(GlobalContext);
+
+
+    const [ expense ,setExpense]=useState({
+        expenseText:"",
+        expenseAmount: 0
+    })
 
     const [income,setIncome]=useState({
         incomeText:"",
         incomeAmount:0
     })
 
+    const {expenseText, expenseAmount} = expense
+
+    const onChangeExpense = (f) => {
+        setExpense({...expense,[f.target.name]: f.target.value});
+        console.log(expense)
+    }
+
+    const onSubmitExpense= (f)=>{
+        f.preventDefault();
+
+        const newExpenseTrnsaction={
+            id:v4(),
+            expenseText,
+            expenseAmount:expenseAmount * 1 ,
+        };
+
+       addExpense(newExpenseTrnsaction);
+        console.log(newExpenseTrnsaction)
+        
+
+    };
+
+
+    
     const {incomeText, incomeAmount} = income
 
     const onChangeIncome = (e) =>{
@@ -39,10 +70,10 @@ const AddTransaction = () => {
                 </div>
                 
             </form>
-            <form>
+            <form onSubmit = {onSubmitExpense}>
                 <div className="input-group expense">
-                    <input type ='text' placeholder ="Add expense..." autoComplete = "off"/>
-                    <input type ='number' placeholder ="AMOUNT" autoComplete = "off"/>
+                    <input type ='text' name= "expenseText" placeholder ="Add expense..." autoComplete = "off" onChange={onChangeExpense}/>
+                    <input type ='number' name = "expenseAmount" placeholder ="AMOUNT" autoComplete = "off" onChange={onChangeExpense} />
                     <input type ="submit" value ="submit" />
                 </div>
                 
