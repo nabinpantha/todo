@@ -36,6 +36,10 @@ const AddTransaction = () => {
        addExpense(newExpenseTrnsaction);
         console.log(newExpenseTrnsaction)
         
+        setExpense({
+            expenseText:'',
+            expenseAmount:0,
+        });
 
     };
 
@@ -59,6 +63,12 @@ const AddTransaction = () => {
         };
         addIncome(newIncomeTransaction);
         console.log(newIncomeTransaction)
+       
+        setIncome({
+            incomeText: '',
+            incomeAmount:0,
+        });
+
     };
     return (
         <div className='form-wrapper'>
