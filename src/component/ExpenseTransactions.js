@@ -14,7 +14,7 @@ const ExpenseTransactions = ({expenseTransaction}) => {
          className="delete-btn"
          onClick = {()=>deleteTransaction(expenseTransaction.id)}
          >
-             <i className='fas fa-trash'></i>
+             <i className='fa fa-trash'></i>
          </button>
      </li>
     )
