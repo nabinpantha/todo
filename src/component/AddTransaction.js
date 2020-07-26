@@ -66,7 +66,7 @@ const AddTransaction = () => {
        
         setIncome({
             incomeText: '',
-            incomeAmount:0,
+            incomeAmount: 0,
         });
 
     };
@@ -74,16 +74,16 @@ const AddTransaction = () => {
         <div className='form-wrapper'>
             <form onSubmit= {onSubmitIncome}>
                 <div className="input-group income">
-                    <input type ='text' name ="incomeText" placeholder ="Add income..." autoComplete = "off" onChange={onChangeIncome}/>
-                    <input type ='number' name = "incomeAmount" placeholder ="AMOUNT" autoComplete = "off" onChange={onChangeIncome}/>
+                    <input type ='text' name ="incomeText" value ={incomeText} placeholder ="Add income..." autoComplete = "off" onChange={onChangeIncome}/>
+                    <input type ='number' name = "incomeAmount" value= {incomeAmount} placeholder ="AMOUNT" autoComplete = "off" onChange={onChangeIncome}/>
                     <input type ="submit" value ="submit" />
                 </div>
                 
             </form>
             <form onSubmit = {onSubmitExpense}>
                 <div className="input-group expense">
-                    <input type ='text' name= "expenseText" placeholder ="Add expense..." autoComplete = "off" onChange={onChangeExpense}/>
-                    <input type ='number' name = "expenseAmount" placeholder ="AMOUNT" autoComplete = "off" onChange={onChangeExpense} />
+                    <input type ='text' name= "expenseText" value = {expenseText} placeholder ="Add expense..." autoComplete = "off" onChange={onChangeExpense}/>
+                    <input type ='number' name = "expenseAmount" value = {expenseAmount} placeholder ="AMOUNT" autoComplete = "off" onChange={onChangeExpense} />
                     <input type ="submit" value ="submit" />
                 </div>
                 
