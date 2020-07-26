@@ -1,22 +1,21 @@
-import React, {createContext, useReducer} from 'react'
+import React, {createContext, useReducer, useEffect} from 'react'
 import AppReducer from './AppReducer'
 
 const initialState ={
 
-    incomeTransactions:[
-        {id:1, incomeText: "car Sold", incomeAmount:1200},
-        {id:2, incomeText: "Cycle Sold", incomeAmount:1200}
-    ],
-    expenseTransactions:[
-        {id:4, expenseText: "Rent ", expenseAmount:120},
-        {id:5, expenseText: " Grocery", expenseAmount:100}
-    ]
+    incomeTransactions: JSON.parse(localStorage.getItem("incomeTransactions")) ||[],
+    expenseTransactions:JSON.parse(localStorage.getItem("expenseTransactions"))||[],
 };
 
 export const GlobalContext = createContext(initialState);
 
 export const GlobalContextProvider=({children})=>{
-const[state, dispatch]= useReducer(AppReducer,initialState)
+const[state, dispatch]= useReducer(AppReducer,initialState);
+
+useEffect(()=>{
+    localStorage.setItem("incomeTransactions",JSON.stringify(state.incomeTransactions))
+    localStorage.setItem("expenseTransactions",JSON.stringify(state.expenseTransactions))
+})
 
 const addIncome = incomeTransaction => {
     dispatch({
@@ -41,6 +40,8 @@ const deleteTransaction = (id) =>{
         payload: id,
     });
 };
+
+
 return(
        <GlobalContext.Provider value ={{
            incomeTransactions : state.incomeTransactions,
