@@ -33,12 +33,21 @@ const addExpense = expenseTransaction =>{
         payload:expenseTransaction,
     })
 }
+
+const deleteTransaction = (id) =>{
+
+    dispatch ({
+        type:"DELETE",
+        payload: id,
+    });
+};
 return(
        <GlobalContext.Provider value ={{
            incomeTransactions : state.incomeTransactions,
            expenseTransactions : state.expenseTransactions,
            addIncome,
-           addExpense
+           addExpense,
+           deleteTransaction,
        }}>
         {children}
        </GlobalContext.Provider>
